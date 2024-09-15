@@ -7,7 +7,7 @@ ENV HOME=/usr/src/app
 WORKDIR /usr/src/app
 USER nobody
 
-RUN npm install -g pnpm@latest
+RUN npm i -g pnpm@latest
 
 ADD --chown=nobody:nogroup ./package* ./
 RUN npm ci --fetch-timeout=600000
