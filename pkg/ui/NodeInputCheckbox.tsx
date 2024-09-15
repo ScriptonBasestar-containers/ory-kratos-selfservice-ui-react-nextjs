@@ -15,7 +15,7 @@ export function NodeInputCheckbox<T>({
       <Checkbox
         name={attributes.name}
         defaultChecked={attributes.value}
-        onChange={(e) => setValue(e.target.checked)}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setValue(e.target.checked)}
         disabled={attributes.disabled || disabled}
         label={getNodeLabel(node)}
         state={

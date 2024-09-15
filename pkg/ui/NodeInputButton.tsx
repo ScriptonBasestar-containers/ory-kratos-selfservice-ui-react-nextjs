@@ -31,7 +31,7 @@ export function NodeInputButton<T>({
     <>
       <Button
         name={attributes.name}
-        onClick={(e) => {
+        onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
           onClick(e)
         }}
         value={attributes.value || ""}
