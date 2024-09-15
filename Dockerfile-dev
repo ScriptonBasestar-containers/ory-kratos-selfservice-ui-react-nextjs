@@ -1,0 +1,19 @@
+FROM node:20.16-alpine
+
+RUN mkdir -p /usr/src/app &&\
+	chown -R nobody:nogroup /usr/src/app
+
+ENV HOME=/usr/src/app
+WORKDIR /usr/src/app
+USER nobody
+
+RUN npm install -g pnpm@latest
+
+ADD --chown=nobody:nogroup ./package* ./
+RUN npm ci --fetch-timeout=600000
+
+EXPOSE 3000
+ENTRYPOINT ["pnpm"]
+CMD ["dev"]
+
+COPY --chown=nobody:nogroup . .

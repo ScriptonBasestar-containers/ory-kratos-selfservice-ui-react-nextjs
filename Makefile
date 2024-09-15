@@ -1,3 +1,6 @@
+rand := $(shell openssl rand -hex 6)
+ORG_NAME := archmagece
+REPO_PREFIX := ory-
 
 .PHONY: build-sdk
 build-sdk:
@@ -18,3 +21,14 @@ build-sdk:
 clean-sdk:
 	rm -rf node_modules/@ory/client/
 	npm i
+
+.PHONY: docker-dev-build
+docker-dev-build:
+	docker build -f ./Dockerfile-dev -t kratos-ui-next-dev . --platform linux/amd64 --platform linux/arm64
+	docker tag kratos-ui-next-dev ${ORG_NAME}/${REPO_PREFIX}kratos-selfservice-ui-next:dev
+
+.PHONY: docker-build
+docker-build:
+	docker build -t kratos-ui-next . --platform linux/amd64 --platform linux/arm64
+	docker tag kratos-ui-next ${ORG_NAME}/${REPO_PREFIX}kratos-selfservice-ui-next:latest
+	docker tag kratos-ui-next ${ORG_NAME}/${REPO_PREFIX}kratos-selfservice-ui-next:prd 
