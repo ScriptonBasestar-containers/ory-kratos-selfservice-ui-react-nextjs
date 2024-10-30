@@ -23,6 +23,7 @@
     "@ory/client": "^1.15.0",
     "@ory/integrations": "^1.2.1",
     "@ory/themes": "^0.0.103",
+    "axios": "^1.7.7",
     "classnames": "^2.5.1",
     "next": "^14.2.11",
     "react": "^18.3.1",
