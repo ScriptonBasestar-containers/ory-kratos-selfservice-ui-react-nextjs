@@ -24,7 +24,8 @@ clean-sdk:
 
 .PHONY: docker-dev-build
 docker-dev-build:
-	docker build -f ./Dockerfile-dev -t kratos-ui-next-dev . --platform linux/amd64 --platform linux/arm64
+	#docker build -f ./Dockerfile-dev -t kratos-ui-next-dev . --platform linux/amd64 --platform linux/arm64
+	docker build -f ./Dockerfile-dev -t kratos-ui-next-dev . --platform linux/amd64
 
 docker-dev-deploy:
 	docker tag kratos-ui-next-dev ${ORG_NAME}/${REPO_PREFIX}kratos-selfservice-ui-nextjs:dev
@@ -32,7 +33,8 @@ docker-dev-deploy:
 
 .PHONY: docker-build
 docker-build:
-	docker build -t kratos-ui-next . --platform linux/amd64 --platform linux/arm64
+	#docker build -t kratos-ui-next . --platform linux/amd64 --platform linux/arm64
+	docker build -t kratos-ui-next . --platform linux/amd64
 
 docker-deploy:
 	docker tag kratos-ui-next ${ORG_NAME}/${REPO_PREFIX}kratos-selfservice-ui-nextjs:prd 
